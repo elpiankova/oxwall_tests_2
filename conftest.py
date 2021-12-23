@@ -4,6 +4,7 @@ from selenium import webdriver
 from app import OxwallApp
 from pages.dashboard_page import DashboardPage
 from pages.signin_page import SignInPage
+from value_objects.user import User
 
 
 @pytest.fixture()
@@ -29,9 +30,9 @@ def dash_page(driver):
 
 
 @pytest.fixture()
-def sign_in(driver, sing_in_page):
+def sign_in_user(driver, sing_in_page):
     # Login
-    user = {"username": "demo", "password": "demo"}
+    user = User(username="demo", password="demo", real_name="Demo")
     sing_in_page.sign_in(user)
     # TODO wait Dashboard page
     yield user
