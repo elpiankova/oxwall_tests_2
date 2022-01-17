@@ -2,12 +2,14 @@ from datetime import datetime
 
 
 class User:
-    def __init__(self, username="", password="", real_name="", email="", gender=None, birthday: str = None):
+    def __init__(self, username="", password="", real_name="", email="", gender=None, birthday: str = None, id=None, is_admin=False):
         self.username = username
         self.password = password
         self.real_name = real_name
         self.email = email
         self.gender = gender
+        self.id = id
+        self.is_admin = is_admin
         if birthday is None:
             self.birthdate = None
         else:

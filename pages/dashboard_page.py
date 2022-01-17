@@ -5,11 +5,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from custom_expected_condidion import presence_of_elements_located_by_number
 from pages.elements.base_element import ElementsObject, ElementObject, PostElementsObjects
 from pages.elements.post_block import PostBlock
+from pages.internal_page import InternalPage
 from pages.locators import DashboardLocators
 from pages.base_page import BasePage
 
 
-class DashboardPage(BasePage):
+class DashboardPage(InternalPage):
     new_post_text_field = ElementObject(DashboardLocators.POST_INPUT)
     send_button = ElementObject(DashboardLocators.SEND_BTN)
     posts = PostElementsObjects(DashboardLocators.POST_BLOCK)

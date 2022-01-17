@@ -1,16 +1,18 @@
+from pages.locators import InternalPageLocators
 from value_objects.user import User
 
 
-def test_sign_in(driver, sing_in_page, dash_page):
+def test_sign_in(driver, sing_in_page, dash_page, main_page, user):
     # sing_in_page = SignInPage(driver)
-    user = User(username="demo", password="demo")
-
+    # user = User(username="admin", password="pass")
+    # assert main_page.is_element_present(InternalPageLocators.SIGN_IN)
+    main_page.sign_in_menu.click()
     assert sing_in_page.sign_in_button.get_attribute("value") == "Sign In"
     sing_in_page.input_username(user.username)
     sing_in_page.input_password(user.password)
     sing_in_page.press_sign_in()
     # dash_page = DashboardPage(driver)
-    assert dash_page.title() == "Pieter - social networking"
+    assert dash_page.title() == "Oxwall - Find New Friends Here!"
 
 
 def test_sign_in_submit(driver, sing_in_page, dash_page):
