@@ -1,0 +1,20 @@
+{
+  "web": {
+    "base_url": "http://127.0.0.1/oxwall/",
+    "admin_user": {
+      "username": "admin",
+      "password": "<pass>",
+      "email": "admin@127.0.0.1",
+      "real_name": "Admin"
+  }
+  },
+  "api": {
+    "url": "http://127.0.0.1/oxwall/api/"
+  },
+  "db": {
+      "host": "localhost",
+      "user": "root",
+      "password": "<pass>",
+      "db": "<db_name>"
+  }
+}
