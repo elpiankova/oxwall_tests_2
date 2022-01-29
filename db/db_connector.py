@@ -1,5 +1,6 @@
 import json
 
+import allure
 import pymysql.cursors
 
 from value_objects.user import User
@@ -71,6 +72,7 @@ class DB:
             result = cursor.fetchall()
         return [User(**u) for u in result]
 
+    @allure.step("THEN a new post appears in DB with input text")
     def get_last_text_post(self):
         """ Get post with maximum id that is last added """
         with self.connection.cursor() as cursor:

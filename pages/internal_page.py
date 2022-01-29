@@ -16,5 +16,9 @@ class InternalPage(BasePage):
         self.sign_in_menu.click()
 
     def sign_out(self):
-        # TODO
-        pass
+        """ Logout (Sign out) at Oxwall site """
+        if self.is_element_present(InternalPageLocators.USER_MENU):
+            self.action_chain.move_to_element(self.user_menu)
+            self.action_chain.perform()
+            el_sign_out = self.find_element(InternalPageLocators.SIGN_OUT)
+            el_sign_out.click()

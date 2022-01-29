@@ -92,6 +92,6 @@ def sign_in_user(driver, main_page, sing_in_page, config):
     user = User(**config["web"]["admin_user"])
     main_page.open_sign_in_form()
     sing_in_page.sign_in(user)
-    # TODO wait Dashboard page
+    sing_in_page.wait_next_page()
     yield user
-    # main_page.logout()  # TODO: sign out
+    main_page.sign_out()  # TODO: fix sign out

@@ -1,5 +1,5 @@
 from pages.elements.base_element import ElementObject
-from pages.locators import SignInLocators
+from pages.locators import SignInLocators, InternalPageLocators
 from pages.base_page import BasePage
 from value_objects.user import User
 
@@ -29,3 +29,6 @@ class SignInPage(BasePage):
         self.input_username(user.username)
         self.input_password(user.password)
         self.press_sign_in()
+
+    def wait_next_page(self):
+        self.find_visible_element(InternalPageLocators.ACTIVE_MENU)

@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
@@ -29,14 +30,17 @@ class DashboardPage(InternalPage):
     #     post_blocks = [PostBlock(el) for el in elms]
     #     return post_blocks
 
+    @allure.step("GIVEN initial amount of post in Oxwall database")
     def count_posts(self):
         return len(self.posts)
 
+    @allure.step("WHEN I add a new post with {input_text} in Dashboard page")
     def create_new_text_post(self, input_text):
         self.new_post_text_field.click()
         self.new_post_text_field.send_keys(input_text)
         self.send_button.click()
 
+    @allure.step("THEN a new post block appears before old list of posts")
     def wait_new_post(self, old_number_of_post: int):
         """
         Wait new post appears

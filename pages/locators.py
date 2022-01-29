@@ -24,7 +24,7 @@ class InternalPageLocators:
     SIGN_IN = (By.CSS_SELECTOR, ".ow_signin_label")
     SIGN_UP = (By.CLASS_NAME, 'ow_console_item_link')
     USER_BOARD = (By.CLASS_NAME, 'ow_notification_list')
-    USER_MENU = (By.CSS_SELECTOR, '.ow_dropdown_menu_item.ow_cursor_pointer')
+    USER_MENU = (By.CSS_SELECTOR, '.ow_console_item.ow_console_dropdown.ow_console_dropdown_hover')
     SIGN_OUT = (By.XPATH, ".//a[contains(@href, 'sign-out')]")
     USER_ICON = (By.CSS_SELECTOR, ".ow_console_items_wrap > div:nth-child(5)")
     MESSAGE = ()
