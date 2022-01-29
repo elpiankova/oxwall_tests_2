@@ -11,7 +11,7 @@ with open(os.path.join(PROJECT_PATH, "data", "post_text.json")) as f:
     data_list = json.load(f)
 
 data_list.append(random_string())
-data_list[0] = pytest.param("data_list[0]", marks=pytest.mark.smoke),
+data_list[0] = pytest.param(data_list[0], marks=pytest.mark.smoke, id=data_list[0])
 
 
 @pytest.mark.smoke
