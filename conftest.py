@@ -3,6 +3,9 @@ import os.path
 
 import pytest
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 from app import OxwallApp
 from db.db_connector import DB
@@ -20,8 +23,8 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 def pytest_addoption(parser):
     parser.addoption("--config", action="store", default="config.json",
                      help="project config file name")
-    # parser.addoption("--browser", action="store", default="Chrome",
-    #                  help="driver")
+    parser.addoption("--browser", action="store", default="Chrome",
+                     help="driver")
 
 
 @pytest.fixture(scope="session")
@@ -32,12 +35,14 @@ def config(request):
 
 
 @pytest.fixture()
-def driver(config, selenium, base_url):
-    # browser = request.config.getoption("--browser")
-    # if browser.lower() == "chrome":
-    #     driver = webdriver.Chrome()
-    # elif browser.lower() == "firefox":
-    #     driver = webdriver.Firefox()
+def driver(config, request, selenium, base_url):
+    browser = request.config.getoption("--browser")
+    if browser.lower() == "chrome":
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+    elif browser.lower() == "firefox":
+        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+    elif browser.lower() == "edge":
+        driver = webdriver.Edge(EdgeChromiumDriverManager().install())
     driver = selenium
     driver.get(base_url)                 #   "https://demo.oxwall.com/")
     yield driver
